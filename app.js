@@ -2,6 +2,18 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-app.listen(4600, (req, res)=>{
-    console.log("Running");
+const posts = require('./server/routes/posts');
+
+app.use(express.static(path.join(__dirname, 'dist/ang-node')));
+
+app.use('/posts', posts);
+
+app.get('*', (req, res)=>{
+    res.sendfile(path.join(__dirname, 'dist/ang-node/index.html'));
+});
+
+const port = process.env.PORT || 4600;
+
+app.listen(port, (req, res)=>{
+    console.log("Running at port 4600");
 });

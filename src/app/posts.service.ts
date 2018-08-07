@@ -9,7 +9,7 @@ export class PostsService {
 
   constructor(private http: HttpClient) { }
   gatAllPosts(){
-    return this.http.get('/posts').pipe(map((posts)=>{
+    return this.http.get('/routes/posts/').pipe(map((posts)=>{
         return posts;
     }));
   }

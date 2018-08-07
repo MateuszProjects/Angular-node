@@ -4,6 +4,9 @@ import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
+import { PostsService } from './posts.service';
+import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
 
 const Routes = [
     {
@@ -13,20 +16,25 @@ const Routes = [
     },
     {
       path: 'posts', component: PostsComponent
+    },
+    {
+      path: 'contact', component: ContactComponent
     }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent
+    PostsComponent,
+    HomeComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(Routes)
   ],
-  providers: [],
+  providers: [PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
